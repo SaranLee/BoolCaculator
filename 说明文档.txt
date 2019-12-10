@@ -1,0 +1,25 @@
+**********语法分析器——布尔表达式计算器**********
+
+1. 实验环境：windows10，win_flex_bison, Visual Studio 2017
+2. 实验目标：编写一个Yacc程序：以布尔表达式作为输入，包括xor、or、and、not四种运算，可以使用括号，常量包括true/false，要求计算这个布尔表达式的值。
+3. 实验步骤说明：
+	1）用VS2017新建一个空项目，BoolCaculator
+	2）新建源文件：lexer.l，设置它的属性”配置属性->常规->项类型“为自定义生成工具，并设置”配置属性->自定义生成工具->常规->命令行“为”win_flex的安装目录\win_flex --wincompat lexer.l“
+	3）新建源文件：parser.y，设置它的属性”配置属性->常规->项类型“为自定义生成工具，并设置”配置属性->自定义生成工具->常规->命令行“为”win_bison的安装目录\win_bison -d parser.y"
+	4）编译lexer.l和parser.y，它们分别会生成一个lexer.c文件，和parser.tab.h，parser.tab.c文件，将它们添加到项目文件夹中
+	5）编译构建并运行
+3. 计算器运行说明：
+	1）布尔表达式的操作数为"true","false"，操作符为&&，||，!，^，可以使用括号。
+	2）布尔表达式以"="结束，敲回车后输出结果。
+4. 输入样例：
+	true && false = 
+	!true || false = 
+	true ^ false && false || false =
+	!false ^ (false && false) || false =
+5. 提交文件说明：
+	1）lexer.l，词法分析的规定文档。
+	2）lexer.c，win_flex编译生成的词法分析器源代码。
+	3）parser.y，语法分析的规定文档。
+	4）parser.tab.h，parser.tab.c，win_bison编译生成的语法分析器源代码。
+	5）BoolCaculator.exe，布尔表达式计算器可执行程序
+	6）result.png，运行BoolCaculator.exe得到的结果截图
